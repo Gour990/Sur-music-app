@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0d12" />
+  <title>SUR — Feel Every Beat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="SUR home"><span class="brand-mark">S</span><span>SUR<span class="brand-dot">.</span></span></a>
+      <div class="side-label">MENU</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span>Home</button>
+        <button class="nav-item" data-page="search"><span class="nav-icon">⌕</span>Discover</button>
+        <button class="nav-item" data-page="library"><span class="nav-icon">▤</span>Your Library</button>
+      </nav>
+      <div class="side-label playlist-label">YOUR COLLECTION</div>
+      <button class="nav-item" data-page="liked"><span class="nav-icon heart-icon">♡</span>Liked Songs</button>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><span class="note-orb">♫</span><p>Your sound.<br><strong>Your universe.</strong></p></div>
+        <span class="tiny-muted">SUR MUSIC · PERSONAL PLAYER</span>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">S</span><strong>SUR<span class="brand-dot">.</span></strong></div>
+        <div class="history-controls"><button class="circle-btn" aria-label="Back" id="backBtn">‹</button><button class="circle-btn" aria-label="Forward" id="forwardBtn">›</button></div>
+        <label class="top-search"><span>⌕</span><input id="globalSearch" type="search" placeholder="Search songs, artists, moods..." autocomplete="off"></label>
+        <button class="profile-chip" id="profileBtn"><span class="avatar">G</span><span>Guest</span><span class="chevron">⌄</span></button>
+      </header>
+
+      <section class="page active-page" id="homePage">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow"><i></i> YOUR PERSONAL SOUNDSPACE</span>
+            <h1>Find your<br><em>frequency.</em></h1>
+            <p>A little escape, one track at a time. Make today sound different.</p>
+            <button class="primary-btn" id="exploreBtn">Explore music <span>↗</span></button>
+          </div>
+          <div class="hero-art" aria-label="Abstract blue sound artwork">
+            <div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
+            <div class="art-core">SUR<span>♫</span></div>
+            <div class="sound-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <span class="art-caption">SOUND IN MOTION · 001</span>
+          </div>
+          <div class="hero-glow"></div>
+        </div>
+
+        <div class="section-heading">
+          <div><span class="eyebrow">HANDPICKED FOR YOU</span><h2>Made for the moment</h2></div>
+          <button class="text-btn" data-page="search">Explore all <span>→</span></button>
+        </div>
+        <div class="mood-grid">
+          <button class="mood-card mood-blue" data-mood="Focus"><span class="mood-symbol">◌</span><span><b>Deep Focus</b><small>Stay in your zone</small></span><span class="mood-arrow">↗</span></button>
+          <button class="mood-card mood-violet" data-mood="Chill"><span class="mood-symbol">☾</span><span><b>Late Night</b><small>Slow it all down</small></span><span class="mood-arrow">↗</span></button>
+          <button class="mood-card mood-silver" data-mood="Energy"><span class="mood-symbol">ϟ</span><span><b>Good Energy</b><small>Feel the momentum</small></span><span class="mood-arrow">↗</span></button>
+        </div>
+
+        <div class="section-heading track-heading">
+          <div><span class="eyebrow">THE SOUND OF NOW</span><h2>Discover tracks</h2></div>
+          <span class="muted-small">Your device · Your music</span>
+        </div>
+        <div class="track-list" id="homeTrackList"></div>
+        <div class="upload-banner">
+          <div class="upload-icon">＋</div><div><b>Bring your music to SUR</b><p>Add audio files from your device and build your own library.</p></div>
+          <button class="outline-btn" id="uploadBannerBtn">Add music</button>
+        </div>
+        <footer>Made to move with you. <span>SUR<span class="brand-dot">.</span></span></footer>
+      </section>
+
+      <section class="page" id="searchPage">
+        <div class="page-intro"><span class="eyebrow">EXPLORE YOUR SOUND</span><h1>Discover<span class="blue-period">.</span></h1><p>Search your library or bring in new music from your device.</p></div>
+        <label class="large-search"><span>⌕</span><input id="pageSearch" type="search" placeholder="What do you want to listen to?"></label>
+        <div class="section-heading"><div><span class="eyebrow">YOUR MUSIC</span><h2>All tracks</h2></div><button class="outline-btn" id="uploadSearchBtn">＋ Add tracks</button></div>
+        <div class="track-list" id="searchTrackList"></div>
+        <div class="empty-state hidden" id="searchEmpty">No tracks found. Try another search or add music from your device.</div>
+      </section>
+
+      <section class="page" id="libraryPage">
+        <div class="page-intro"><span class="eyebrow">ALL YOUR FAVOURITES, IN ONE PLACE</span><h1>Your Library<span class="blue-period">.</span></h1><p>Your collection stays on this device in this starter version.</p></div>
+        <div class="library-stats"><div><strong id="libraryCount">0</strong><span>TRACKS</span></div><div><strong id="likedCount">0</strong><span>LIKED</span></div></div>
+        <div class="section-heading"><div><span class="eyebrow">COLLECTION</span><h2>Your tracks</h2></div><button class="outline-btn" id="uploadLibraryBtn">＋ Add tracks</button></div>
+        <div class="track-list" id="libraryTrackList"></div>
+        <div class="empty-state hidden" id="libraryEmpty">Your library is waiting. Add some audio files to get started.</div>
+      </section>
+
+      <section class="page" id="likedPage">
+        <div class="liked-hero"><div class="liked-art">♡</div><div><span class="eyebrow">YOUR PERSONAL COLLECTION</span><h1>Liked Songs<span class="blue-period">.</span></h1><p id="likedSubtitle">The tracks you keep close.</p></div></div>
+        <div class="track-list" id="likedTrackList"></div>
+        <div class="empty-state hidden" id="likedEmpty">No favourites yet. Tap the heart beside a track to save it here.</div>
+      </section>
+
+      <section class="page" id="profilePage">
+        <div class="page-intro"><span class="eyebrow">YOUR SPACE</span><h1>Profile<span class="blue-period">.</span></h1><p>A simple personal listening space.</p></div>
+        <div class="profile-panel"><div class="avatar large-avatar">G</div><div><h2>Guest listener</h2><p>Your music is stored locally in this browser session/device.</p></div></div>
+        <div class="section-heading"><div><span class="eyebrow">APP SETTINGS</span><h2>About SUR</h2></div></div>
+        <div class="settings-card"><div><b>Version</b><span>0.1 · Starter edition</span></div><div><b>Storage</b><span>Local device library</span></div><div><b>Audio source</b><span>Your own imported audio files</span></div></div>
+        <p class="muted-small legal-note">SUR is an independent music-player project. Only add audio you own or are permitted to use.</p>
+      </section>
+    </main>
+  </div>
+
+  <input type="file" id="audioInput" accept="audio/*" multiple hidden />
+  <div class="toast" id="toast" role="status"></div>
+
+  <section class="player" id="player">
+    <div class="now-playing">
+      <div class="mini-cover" id="miniCover"><span>♫</span></div>
+      <div class="now-meta"><b id="nowTitle">Choose a track</b><span id="nowArtist">Your music will appear here</span></div>
+      <button class="like-btn player-like" id="playerLike" aria-label="Like track">♡</button>
+    </div>
+    <div class="player-center">
+      <div class="controls"><button class="control-btn" id="shuffleBtn" aria-label="Shuffle">⤨</button><button class="control-btn" id="prevBtn" aria-label="Previous">|‹</button><button class="play-btn" id="playBtn" aria-label="Play">▶</button><button class="control-btn" id="nextBtn" aria-label="Next">›|</button><button class="control-btn" id="repeatBtn" aria-label="Repeat">↻</button></div>
+      <div class="progress-row"><span id="currentTime">0:00</span><input type="range" id="progress" min="0" max="100" value="0"><span id="duration">0:00</span></div>
+    </div>
+    <div class="player-extra"><span class="volume-icon">◖</span><input type="range" id="volume" min="0" max="1" step="0.01" value="0.8"><button class="queue-btn" id="queueBtn" aria-label="Your library">▤</button></div>
+  </section>
+  <audio id="audio" preload="metadata"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
